@@ -4,6 +4,6 @@ namespace Nbugs.IDAL
 {
     public interface IDbContext
     {
-        DbContext GetInstance { get; }
+        DbContext GetInstance { get; set; }
     }
 }

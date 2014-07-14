@@ -1,0 +1,88 @@
+﻿@using Nbugs.OperationApp.Models.System;
+@using Nbugs.OperationApp.UI.Admin.Core;
+
+@{
+    ViewBag.Title = "设置用户包含的角色";
+    Layout = "~/Views/Shared/_Index_LayoutEdit.cshtml";
+
+    List<Permission> Permissions = (List<Permission>)ViewBag.Permissions;
+    if (Permissions == null)
+    {
+        Permissions = new List<Permission>();
+    }
+}
+
+<div class="mvctool bgb">
+    @Html.ToolButton("btnSave", "icon-save", "保存", Permissions, "Allot", "Account", true)
+</div>
+<div class="pd3">
+    <table id="UserList"></table>
+</div>
+@*Jqgrid*@
+<script type="text/javascript">
+    $(function () {
+
+        $('#UserList').datagrid({
+            url: '/Account/GetRoles?userId=@(ViewBag.UserId)',
+            loadMsg: '加载中，请等待...',
+            width: $(window).width() - 7,
+            methord: 'post',
+            //height: $(window).height() - 2,
+            fitColumns: true,
+            sortName: 'Id',
+            sortOrder: 'desc',
+            idField: 'Id',
+            pageSize: 12,
+            pageList: [12, 20, 30, 40, 50],
+            pagination: false,
+            striped: true, //奇偶行是否区分
+            singleSelect: true,//单选模式
+            columns: [[
+                { field: 'Id', title: 'ID', width: 80, hidden: true },
+                { field: 'Name', title: '角色名称', width: 120 },
+                {
+                    field: 'Flag', title: '是否分配', width: 80, formatter: function (value) {
+                        if (value) {
+                            return "<input type='checkbox' checked='checked' value=" + value + " />";
+                        } else {
+                            return "<input type='checkbox' value=" + value + " />";
+                        }
+                    }
+                }
+            ]],
+            onLoadSuccess: function () {
+                var rows = $("#UserList").datagrid("getRows");
+                for (var i = 0; i < rows.length; i++) {
+                    //获取每一行的数据
+                    $('#UserList').datagrid('beginEdit', i);
+                }
+            }
+        });
+    });
+    $(function () {
+        $("#btnSave").click(function () {
+            var updateRows = 0;
+            var rows = $("#UserList").datagrid("getRows"); //这段代码是获取当前页的所有行。
+            for (var i = 0; i < rows.length; i++) {
+                var setFlag = $("td[field='Flag'] input").eq(i).prop("checked");
+                if (rows[i].Flag != setFlag)//判断是否有作修改
+                {
+                    $.post("@Url.Action("UpdateUserRoleByUserId")", {
+                        "UserId":"@(ViewBag.UserId)",
+                        "Flag": setFlag,
+                        "RoleId": rows[i].Id,
+                    });
+                    updateRows++;
+                }
+            }
+            if (updateRows > 0) {
+                window.parent.frameReturnByMes("保存成功!");
+                window.parent.frameReturnByReload(true);
+                window.parent.frameReturnByClose()
+            } else {
+                $.messager.alert('警告', '没有更新!');
+            }
+        });
+
+    });
+</script>

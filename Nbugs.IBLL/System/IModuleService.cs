@@ -10,6 +10,6 @@ namespace Nbugs.IBLL.System
 
         void InsertRoleModule();
 
-        List<Module> GetMenuByUserIdAndModuleId(int UserId, int ModuleId);
+        List<Module> GetMenuByUserIdAndModuleId(int UserId, int? ModuleId);
     }
 }

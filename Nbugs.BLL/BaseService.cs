@@ -11,9 +11,7 @@ namespace Nbugs.BLL
 {
     public abstract class BaseService<T> : IBaseService<T> where T : class,new()
     {
-        [Inject]
-        public IBaseRepository<T> currentRepository;
-        [Named("Db144Session")]
+        public IBaseRepository<T> currentRepository { get; set; }
         public IDbSession dbSession { get; set; }
 
         public T AddEntity(T entity)

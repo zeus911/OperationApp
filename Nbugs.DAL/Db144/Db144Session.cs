@@ -7,9 +7,9 @@ using System.Linq;
 
 namespace Nbugs.DAL.Db144
 {
-    public class Db144Seesion : IDb144Session
+    public class Db144Session : IDb144Session
     {
-        [Named("Db144Context")]
+        [Inject]
         public IDbContext DbContext { get; set; }
 
         [Inject]
@@ -28,7 +28,7 @@ namespace Nbugs.DAL.Db144
         public IRoleModuleRepository RoleModuleRepository { get; set; }
 
         [Inject]
-        public IRoleModuleActionRespository RoleModuleRepsitory { get; set; }
+        public IRoleModuleActionRepository RoleModuleActionRepository { get; set; }
 
         public int SaveChanges()
         {

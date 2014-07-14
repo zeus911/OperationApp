@@ -138,6 +138,10 @@ $(function () {
                });
                $.parser.parse();
                $.post("../Account/GetTree?id=" + id, function (data) {//循环创建树的项
+                   if (data == -1)
+                   {
+                       window.location.href = "../Account/Login";
+                   }
                    $("#tree" + id).tree({
                        data: data,
                        onBeforeExpand: function (node, param) {

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Nbugs.OperationApp.Models.System;
+using System.Linq;
 
 namespace Nbugs.IBLL.System
 {
@@ -14,5 +15,6 @@ namespace Nbugs.IBLL.System
         void DeleteUserRole(int UserId, int RoleId);
 
         List<int> GetRolesByUserId(int UserId);
+        IQueryable<User> GetUsers(int pageIndex, int pageSize, out int total, bool isAsc);
     }
 }

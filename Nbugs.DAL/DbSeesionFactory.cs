@@ -5,12 +5,12 @@ namespace Nbugs.DAL
 {
     public class DbSeesionFactory
     {
-        public static Db144Seesion GetDb144Seesion()
+        public static Db144Session GetDb144Seesion()
         {
-            Db144Seesion _Db144Seesion = (Db144Seesion)CallContext.GetData("Db144Seesion");
+            Db144Session _Db144Seesion = (Db144Session)CallContext.GetData("Db144Seesion");
             if (_Db144Seesion == null)
             {
-                _Db144Seesion = new Db144Seesion();
+                _Db144Seesion = new Db144Session();
                 CallContext.SetData("Db144Seesion", _Db144Seesion);
             }
             return _Db144Seesion;

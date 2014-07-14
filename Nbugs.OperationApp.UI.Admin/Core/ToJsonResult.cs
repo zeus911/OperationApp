@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 
-namespace Nbugs.Common
+namespace Nbugs.OperationApp.UI.Admin.Core
 {
     public class ToJsonResult : JsonResult
     {

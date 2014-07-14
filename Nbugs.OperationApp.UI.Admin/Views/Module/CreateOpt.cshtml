@@ -1,0 +1,81 @@
+﻿@model Nbugs.OperationApp.Models.System.ModuleAction
+@{
+    ViewBag.Title = "创建";
+    Layout = "~/Views/Shared/_Index_LayoutEdit.cshtml";
+}
+<script type="text/javascript">
+    $(function () {
+        $("#btnSave").click(function () {
+            if ($("form").valid()) {
+                $.ajax({
+                url: "@Url.Action("CreateOpt")",
+                type: "Post",
+                data: $("form").serialize(),
+                dataType: "json",
+                success: function (data) {
+                    if (data.type == 1) {
+                        window.parent.frameReturnByMes(data.message);
+                        window.parent.frameReturnByReloadOpt(true);
+                        window.parent.frameReturnByClose()
+                    }
+                    else {
+                        window.parent.frameReturnByMes(data.message);
+                    }
+                }
+            });
+        }
+        return false;
+    });
+    $("#btnReturn").click(function () {
+        window.parent.frameReturnByClose();
+    });
+});
+</script>
+<div class="mvctool bgb">
+    <a id="btnSave" style="float: left;" class="l-btn l-btn-plain">
+        <span class="l-btn-left">
+            <span class="l-btn-text icon-save" style="padding-left: 20px;">保存</span>
+        </span>
+    </a>
+    <a id="btnReturn" class="l-btn l-btn-plain">
+        <span class="l-btn-left">
+            <span class="l-btn-text icon-return" style="padding-left: 20px;">返回</span>
+        </span>
+    </a>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.Id)
+    <table class="fromEditTable setTextWidth200">
+        <tbody>
+            <tr>
+                <td style="width:100px; text-align:right;">
+                    @Html.LabelFor(model => model.Name)：
+                </td>
+                <td style="width:200px">
+                    @Html.EditorFor(model => model.Name)
+                </td>
+                <td>@Html.ValidationMessageFor(model => model.Name)</td>
+            </tr>
+            <tr>
+                <td style="width:100px; text-align:right;">
+                    @Html.LabelFor(model => model.KeyCode)：
+                </td>
+                <td style="width:200px">
+                    @Html.EditorFor(model => model.KeyCode)
+                </td>
+                <td>@Html.ValidationMessageFor(model => model.KeyCode)</td>
+            </tr>
+            <tr>
+                <td style="width:100px; text-align:right;">
+                    @Html.LabelFor(model => model.ModuleId)：
+                </td>
+                <td style="width:200px">
+                    @Html.TextBoxFor(model => model.ModuleId,
+                    new { @readOnly = "readOnly",@value= ViewData["moduleId"]})
+                </td>
+                <td>@Html.ValidationMessageFor(model => model.ModuleId)</td>
+            </tr>
+        </tbody>
+    </table>
+}

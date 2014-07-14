@@ -6,7 +6,7 @@ using Nbugs.IDAL;
 
 namespace Nbugs.DAL.Db144
 {
-    public class Db144ContextFactoy:IDbContext
+    public class Db144ContextFactory:IDbContext
     {
         public DbContext GetInstance
         {
