@@ -65,6 +65,12 @@ namespace Nbugs.OperationApp.UI.Admin.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IUserService>().To<UserService>();
+            kernel.Bind<IModuleService>().To<ModuleService>();
+            kernel.Bind<IRoleService>().To<RoleService>();
+            kernel.Bind<IRoleModuleActionService>().To<RoleModuleActionService>();
+            kernel.Bind<IModuleActionsService>().To<ModuleActionsService>();
+            kernel.Bind<IRoleModuleService>().To<RoleModuleService>();
+
             kernel.Bind<IDb144Session>().To<Db144Session>().Named("Db144Session");
             kernel.Bind<IDbContext>().To<Db144ContextFactory>().Named("Db144Context");
             kernel.Bind<IRoleRepository>().To<RoleRepository>();
@@ -72,9 +78,7 @@ namespace Nbugs.OperationApp.UI.Admin.App_Start
             kernel.Bind<IModuleRepository>().To<ModuleRepository>();
             kernel.Bind<IModuleActionsRepository>().To<ModuleActionsRepository>();
             kernel.Bind<IRoleModuleRepository>().To<RoleModuleRepository>();
-            kernel.Bind<IRoleModuleActionRespository>().To<RoleModuleActionRepository>();
-
-            //kernel.Bind<IDbContext>().To<Db144ContextFactoy>();
+            kernel.Bind<IRoleModuleActionRepository>().To<RoleModuleActionRepository>();
         }
     }
 }

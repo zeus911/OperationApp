@@ -61,7 +61,6 @@
     <Compile Include="Db144\Db144ContextFactory.cs" />
     <Compile Include="Db144\UserRepository.cs" />
     <Compile Include="DbSeesionFactory.cs" />
-    <Compile Include="NinjectCommon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

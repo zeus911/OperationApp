@@ -10,7 +10,7 @@
 
         IRoleModuleRepository RoleModuleRepository { get; set; }
 
-        IRoleModuleActionRespository RoleModuleRepsitory { get; set; }
+        IRoleModuleActionRepository RoleModuleActionRepository { get; set; }
 
         IModuleActionsRepository ModuleActionsRepository { get; set; }
     }

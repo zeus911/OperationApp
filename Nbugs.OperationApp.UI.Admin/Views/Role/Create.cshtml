@@ -1,0 +1,57 @@
+﻿@model Nbugs.OperationApp.Models.System.Role
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Index_LayoutEdit.cshtml";
+}
+<div class="mvctool bgb">
+    <a id="btnSave" style="float: left;" class="l-btn l-btn-plain">
+        <span class="l-btn-left">
+            <span class="l-btn-text icon-save" style="padding-left: 20px;">保存</span>
+        </span>
+    </a>
+</div>
+@using (Html.BeginForm("Create", "Role", null, FormMethod.Post, new { Id = "CreateForm" }))
+{
+    @Html.ValidationSummary(true)
+    <table class="fromEditTable setTextWidth300">
+        <tr>
+            <td style="width:100px; text-align:right;">
+                @Html.LabelFor(model => model.Name)：
+            </td>
+            <td>
+                <input class="easyui-validatebox" type="text" name="Name"
+                       data-options="required:true,validType:'length[1,160]'">
+            </td>
+        </tr>
+    </table>
+}
+<script type="text/javascript">
+    $(function () {
+        $("#btnSave").click(function () {
+            var validate = $("#CreateForm").form('validate');
+
+            if (validate == false) {
+
+                return false;
+
+            }
+            $.ajax({
+                url: "/Role/Create",
+                type: "Post",
+                data: $("#CreateForm").serialize(),
+                dataType: "json",
+                success: function (data) {
+                    if (data == 1) {
+                        window.parent.frameReturnByMes("成功");
+                        window.parent.frameReturnByReload(true);
+                        window.parent.frameReturnByClose();
+                    }
+                    else {
+                        window.parent.frameReturnByMes("失败");
+                    }
+                }
+            });
+        });
+    });
+</script>

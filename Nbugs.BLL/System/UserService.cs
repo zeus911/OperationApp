@@ -3,9 +3,11 @@ using Nbugs.IDAL;
 using Nbugs.IDAL.Db144;
 using Nbugs.OperationApp.Models.System;
 using Ninject;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace Nbugs.BLL.System
 {
@@ -15,15 +17,7 @@ namespace Nbugs.BLL.System
         {
             dbSession =_DbSession;
             currentRepository = _DbSession.UserRepository;
-        }
-        //private IDb144Session dbSession { get; set; }
-        //private IBaseRepository<User> currentRepository
-        //{
-        //    get
-        //    {
-        //        return dbSession.UserRepository;
-        //    }
-        //}      
+        }    
         public enum ErrorCode : int
         {
             UserNotExist = 1,
@@ -74,6 +68,10 @@ namespace Nbugs.BLL.System
             List<int> result = new List<int>();
             dbSession.ExcuteSQL("exec GetRolesByUserId @UserId", ref result, para);
             return result;
+        }
+        public IQueryable<User> GetUsers(int pageIndex, int pageSize, out int total,bool isAsc)
+        {
+            return currentRepository.LoadPageEntities(pageIndex, pageSize, out total, x=>true, isAsc,r=>r.Id);
         }
     }
 }

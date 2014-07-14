@@ -25,7 +25,7 @@ namespace Nbugs.OperationApp.UI.Admin.Core
             {
                 filterContext.Result = new JsonResult
                 {
-                    Data = new { message = "登录超时，请重新登录后操作！" },
+                    Data=-1,
                     JsonRequestBehavior = JsonRequestBehavior.AllowGet
                 };
                 return;

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Nbugs.OperationApp.UI.Admin.Core;
 using System.Web.Mvc;
 
 namespace Nbugs.OperationApp.UI.Admin.Controllers
 {
+    [LoginAuthorize]
     public class HomeController : Controller
     {
         //
@@ -15,6 +13,5 @@ namespace Nbugs.OperationApp.UI.Admin.Controllers
         {
             return View();
         }
-
     }
 }

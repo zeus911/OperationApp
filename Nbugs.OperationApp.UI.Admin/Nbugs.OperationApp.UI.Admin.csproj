@@ -61,10 +61,6 @@
     <Reference Include="Nbugs.Common">
       <HintPath>..\Lib\Nbugs.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Nbugs.DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lib\Nbugs.DAL.dll</HintPath>
-    </Reference>
     <Reference Include="Nbugs.IBLL">
       <HintPath>..\Lib\Nbugs.IBLL.dll</HintPath>
     </Reference>
@@ -167,8 +163,12 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="Areas\yxt\yxtAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ModuleController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\RoleModuleController.cs" />
     <Compile Include="Core\ExtendMvcHtml.cs" />
     <Compile Include="Core\LoginAuthorizeAttribute.cs" />
     <Compile Include="Core\SupportFilterAttribute.cs" />
@@ -434,6 +434,7 @@
     <Content Include="Content\themes\blue\images\Thumbs.db" />
     <Content Include="Content\themes\gray\images\Thumbs.db" />
     <Content Include="Content\themes\metro\images\Thumbs.db" />
+    <Content Include="Areas\yxt\Views\Web.config" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\easyui-lang-zh_CN.js" />
     <Content Include="Scripts\home.js" />
@@ -472,13 +473,31 @@
     <Content Include="Views\Account\Details.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\Create.cshtml" />
+    <Content Include="Views\Role\Edit.cshtml" />
+    <Content Include="Views\RoleModule\Index.cshtml" />
+    <Content Include="Views\Module\Index.cshtml" />
+    <Content Include="Views\Module\Create.cshtml" />
+    <Content Include="Views\Module\CreateOpt.cshtml" />
+    <Content Include="Views\Module\Edit.cshtml" />
+    <Content Include="Views\Module\EditOpt.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\yxt\Controllers\" />
+    <Folder Include="Areas\yxt\Models\" />
+    <Folder Include="Areas\yxt\Views\Shared\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nbugs.DAL\Nbugs.DAL.csproj">
+      <Project>{9c99eeb6-31ae-456d-80b1-ff38c370c03f}</Project>
+      <Name>Nbugs.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
