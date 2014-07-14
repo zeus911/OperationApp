@@ -6,7 +6,7 @@ namespace Nbugs.IDAL
 {
     public interface IDbSession
     {
-        IDbContext DbContext { get; }
+        IDbContext DbContext { get; set; }
         int SaveChanges();
 
         int ExcuteSQL(string sql, params SqlParameter[] prams);

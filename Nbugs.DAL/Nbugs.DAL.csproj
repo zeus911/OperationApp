@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\Lib\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -52,13 +52,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseRepository.cs" />
-    <Compile Include="Db144\Db144Seesion.cs" />
+    <Compile Include="Db144\Db144Session.cs" />
     <Compile Include="Db144\ModuleActionsRepository.cs" />
     <Compile Include="Db144\ModuleRepository.cs" />
     <Compile Include="Db144\RoleModuleActionRepository.cs" />
     <Compile Include="Db144\RoleModuleRepository.cs" />
     <Compile Include="Db144\RoleRepository.cs" />
-    <Compile Include="Db144\Db144ContextFactoy.cs" />
+    <Compile Include="Db144\Db144ContextFactory.cs" />
     <Compile Include="Db144\UserRepository.cs" />
     <Compile Include="DbSeesionFactory.cs" />
     <Compile Include="NinjectCommon.cs" />

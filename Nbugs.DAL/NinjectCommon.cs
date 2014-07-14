@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Nbugs.DAL.Db144;
 using Nbugs.IDAL;
 using Nbugs.IDAL.Db144;
-using Nbugs.DAL.Db144;
 using Ninject;
 
 namespace Nbugs.DAL
@@ -15,6 +11,7 @@ namespace Nbugs.DAL
         {
             CreateKernel();
         }
+
         private static IKernel CreateKernel()
         {
             var kernel = new StandardKernel();
@@ -33,7 +30,7 @@ namespace Nbugs.DAL
 
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IDbContext>().To<Db144ContextFactoy>().Named("Db144Context");
+            kernel.Bind<IDbContext>().To<Db144ContextFactory>().Named("Db144Context");
             kernel.Bind<IRoleRepository>().To<RoleRepository>();
             kernel.Bind<IUserRepository>().To<UserRepository>();
             kernel.Bind<IModuleRepository>().To<ModuleRepository>();
@@ -41,7 +38,7 @@ namespace Nbugs.DAL
             kernel.Bind<IRoleModuleRepository>().To<RoleModuleRepository>();
             kernel.Bind<IRoleModuleActionRespository>().To<RoleModuleActionRepository>();
 
-            kernel.Bind<IDbContext>().To<Db144ContextFactoy>();
+            kernel.Bind<IDbContext>().To<Db144ContextFactory>();
             //kernel.Bind<IDbContext>().To<Db144ContextFactoy>().WhenInjectedInto<UserRepository>();
             //kernel.Bind<IDbContext>().To<Db144ContextFactoy>().WhenInjectedInto<RoleRepository>();
             //kernel.Bind<IDbContext>().To<Db144ContextFactoy>().WhenInjectedInto<ModuleRepository>();

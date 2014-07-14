@@ -3,28 +3,31 @@
 
 namespace Nbugs.OperationApp.UI.Admin.App_Start
 {
+    using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+    using Nbugs.BLL.System;
+    using Nbugs.DAL.Db144;
+    using Nbugs.IBLL.System;
+    using Nbugs.IDAL;
+    using Nbugs.IDAL.Db144;
+    using Ninject;
+    using Ninject.Web.Common;
     using System;
     using System.Web;
 
-    using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-
-    using Ninject;
-    using Ninject.Web.Common;
-
-    public static class NinjectWebCommon 
+    public static class NinjectWebCommon
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
         /// <summary>
         /// Starts the application
         /// </summary>
-        public static void Start() 
+        public static void Start()
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
             bootstrapper.Initialize(CreateKernel);
         }
-        
+
         /// <summary>
         /// Stops the application.
         /// </summary>
@@ -32,7 +35,7 @@ namespace Nbugs.OperationApp.UI.Admin.App_Start
         {
             bootstrapper.ShutDown();
         }
-        
+
         /// <summary>
         /// Creates the kernel that will manage your application.
         /// </summary>
@@ -44,7 +47,7 @@ namespace Nbugs.OperationApp.UI.Admin.App_Start
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
-
+                kernel.Settings.InjectNonPublic = true;
                 RegisterServices(kernel);
                 return kernel;
             }
@@ -61,6 +64,17 @@ namespace Nbugs.OperationApp.UI.Admin.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-        }        
+            kernel.Bind<IUserService>().To<UserService>();
+            kernel.Bind<IDb144Session>().To<Db144Session>().Named("Db144Session");
+            kernel.Bind<IDbContext>().To<Db144ContextFactory>().Named("Db144Context");
+            kernel.Bind<IRoleRepository>().To<RoleRepository>();
+            kernel.Bind<IUserRepository>().To<UserRepository>();
+            kernel.Bind<IModuleRepository>().To<ModuleRepository>();
+            kernel.Bind<IModuleActionsRepository>().To<ModuleActionsRepository>();
+            kernel.Bind<IRoleModuleRepository>().To<RoleModuleRepository>();
+            kernel.Bind<IRoleModuleActionRespository>().To<RoleModuleActionRepository>();
+
+            //kernel.Bind<IDbContext>().To<Db144ContextFactoy>();
+        }
     }
 }
