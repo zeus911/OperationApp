@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E58D51BD-20D2-4E13-A9BF-540AA81369FB}</ProjectGuid>
+    <ProjectGuid>{9C99EEB6-31AE-456D-80B1-FF38C370C03F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Nbugs.DAL</RootNamespace>

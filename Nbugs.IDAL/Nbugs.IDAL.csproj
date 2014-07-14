@@ -30,6 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Nbugs.OperationApp.Models, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Nbugs.OperationApp.Models.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,9 +47,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Db144\IDb144Session.cs" />
+    <Compile Include="Db144\IModuleActionsRepository.cs" />
+    <Compile Include="Db144\IModuleRepository.cs" />
+    <Compile Include="Db144\IRoleModuleActionRespository.cs" />
+    <Compile Include="Db144\IRoleModuleRepository.cs" />
+    <Compile Include="Db144\IRoleRepository.cs" />
+    <Compile Include="Db144\IUserRepository.cs" />
+    <Compile Include="IBaseRepository.cs" />
+    <Compile Include="IDbContext.cs" />
+    <Compile Include="IDbSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

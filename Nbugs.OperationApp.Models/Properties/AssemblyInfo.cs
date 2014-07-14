@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过以下
 // 特性集控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("Nbugs.Common")]
+[assembly: AssemblyTitle("Nbugs.OperationApp.Models")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Nbugs.Common")]
+[assembly: AssemblyProduct("Nbugs.OperationApp.Models")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("e7598c67-388e-41d6-aa28-92c44f7101d0")]
+[assembly: Guid("d7ebd577-0ebe-4361-b12d-8c7e13809841")]
 
 // 程序集的版本信息由下面四个值组成: 
 //
