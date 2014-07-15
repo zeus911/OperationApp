@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="ConvertHelper.cs" />
     <Compile Include="Logger.cs" />
-    <Compile Include="OrclHelper.cs" />
+    <Compile Include="OracleHelper.cs" />
     <Compile Include="Param.cs" />
     <Compile Include="SqlHelper.cs" />
     <Compile Include="Suggestion.cs" />

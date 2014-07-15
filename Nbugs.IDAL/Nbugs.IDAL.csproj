@@ -55,11 +55,14 @@
     <Compile Include="Db144\IRoleRepository.cs" />
     <Compile Include="Db144\IUserRepository.cs" />
     <Compile Include="IBaseRepository.cs" />
+    <Compile Include="IDataAccess.cs" />
     <Compile Include="IDbContext.cs" />
     <Compile Include="IDbSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Db203\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

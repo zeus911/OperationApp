@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 
 namespace Nbugs.Common
 {
-    public abstract class SqlHelper
+    public sealed class SqlHelper
     {
         private static SqlConnection sqlConn;
 
         private static SqlConnection Init(string str)
         {
-            sqlConn = new SqlConnection(str);
-            return sqlConn;
+           return sqlConn = new SqlConnection(str);
         }
 
         private static void Open()
@@ -39,7 +39,7 @@ namespace Nbugs.Common
             }
         }
 
-        private static SqlCommand CreateProcCommand(string procName, SqlParameter[] prams)
+        private static SqlCommand CreateProcCommand(string procName,params DbParameter[] prams)
         {
             Open();
             SqlCommand cmd = new SqlCommand(procName, sqlConn);
@@ -60,7 +60,7 @@ namespace Nbugs.Common
             return cmd;
         }
 
-        private static SqlDataAdapter CreateProcDataAdapter(string procName, SqlParameter[] prams)
+        private static SqlDataAdapter CreateProcDataAdapter(string procName,params DbParameter[] prams)
         {
             Open();
             ///设置SqlDataAdapter对象
@@ -85,7 +85,7 @@ namespace Nbugs.Common
             return da;
         }
 
-        private static SqlDataAdapter CreateSQLDataAdapter(string cmdText, SqlParameter[] prams)
+        private static SqlDataAdapter CreateSQLDataAdapter(string cmdText,params DbParameter[] prams)
         {
             Open();
             ///设置SqlDataAdapter对象
@@ -109,7 +109,7 @@ namespace Nbugs.Common
             return da;
         }
 
-        private static SqlCommand CreateSQLCommand(string cmdText, SqlParameter[] prams)
+        private static SqlCommand CreateSQLCommand(string cmdText,params DbParameter[] prams)
         {
             Open();
             ///设置Command
@@ -138,7 +138,7 @@ namespace Nbugs.Common
         /// </summary>
         /// <param name="procName">存储过程名</param>
         /// <param name="prams">参数</param>
-        public static void RunProc(string procName, SqlParameter[] prams,string sqlConnStr)
+        public static void RunProc(string procName, string sqlConnStr, params DbParameter[] prams)
         {
             try
             {
@@ -157,7 +157,7 @@ namespace Nbugs.Common
         /// <param name="procName">存储过程名</param>
         /// <param name="prams">参数</param>
         /// <param name="dataSet">DataSet引用</param>
-        public static void RunProc(string procName, SqlParameter[] prams, ref DataSet dataSet,string sqlConnStr)
+        public static void RunProc(string procName, ref DataSet dataSet, string sqlConnStr, params DbParameter[] prams)
         {
             dataSet = dataSet == null ? new DataSet() : dataSet;
             try
@@ -177,7 +177,7 @@ namespace Nbugs.Common
         /// </summary>
         /// <param name="cmdText">sql语句</param>
         /// <param name="prams">参数</param>
-        public static void RunSQL(string cmdText, SqlParameter[] prams,string sqlConnStr)
+        public static void RunSQL(string cmdText,string sqlConnStr,params DbParameter[] prams)
         {
             try
             {
@@ -198,7 +198,7 @@ namespace Nbugs.Common
         /// <param name="cmdText"></param>
         /// <param name="prams"></param>
         /// <param name="dataSet"></param>
-        public static void RunSQL(string cmdText, SqlParameter[] prams, ref DataSet dataSet,string sqlConnStr)
+        public static void RunSQL(string cmdText, ref DataSet dataSet,string sqlConnStr,params DbParameter[] prams)
         {
             dataSet = dataSet == null ? new DataSet() : dataSet;
             try
@@ -213,7 +213,7 @@ namespace Nbugs.Common
             { }
         }
 
-        public static string RunSQLExecuteScalar(string cmdText, SqlParameter[] prams,string sqlConnStr)
+        public static string RunSQLExecuteScalar(string cmdText,string sqlConnStr,params DbParameter[] prams)
         {
             try
             {
