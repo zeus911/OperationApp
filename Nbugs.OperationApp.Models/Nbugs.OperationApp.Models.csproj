@@ -63,7 +63,6 @@
     <Compile Include="System\RoleModule.cs" />
     <Compile Include="System\RoleModuleAction.cs" />
     <Compile Include="System\UpdateModel.cs" />
-    <Compile Include="System\UpdateModule.cs" />
     <Compile Include="System\User.cs" />
     <Compile Include="System\UserRole.cs" />
   </ItemGroup>
